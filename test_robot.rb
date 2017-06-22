@@ -4,8 +4,7 @@ require './robot.rb'
 
 class TestRobot < MiniTest::Test
 
-  def test_that_foreign_robot_neeing_repairs_sent_to_station_1
-    skip
+  def test_that_foreign_robot_needing_repairs_sent_to_station_1
     # arrange
     @robot = Robot.new
     @robot.needs_repairs = true
@@ -18,12 +17,15 @@ class TestRobot < MiniTest::Test
   end
 
   def test_that_vintage_robot_needing_repairs_sent_to_station_2
-    skip
     # arrange
-
+    @robot = Robot.new
+    @robot.needs_repairs = true
+    @robot.foreign_model = false
+    @robot.vintage_model = true
     # act
 
     # assert
+    assert @robot.station == 2
   end
 
   def test_that_standard_robot_needing_repairs_sent_to_station_3
