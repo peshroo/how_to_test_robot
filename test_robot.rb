@@ -7,10 +7,14 @@ class TestRobot < MiniTest::Test
   def test_that_foreign_robot_neeing_repairs_sent_to_station_1
     skip
     # arrange
-
+    @robot = Robot.new
+    @robot.needs_repairs = true
+    @robot.foreign_model = true
+    @robot.vintage_model = false
     # act
 
     # assert
+    assert @robot.station == 1
   end
 
   def test_that_vintage_robot_needing_repairs_sent_to_station_2
