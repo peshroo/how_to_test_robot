@@ -11,9 +11,9 @@ class TestRobot < MiniTest::Test
     @robot.foreign_model = true
     @robot.vintage_model = false
     # act
-
+    send_to_station = robot.station
     # assert
-    assert @robot.station == 1
+    assert_equal(send_to_station, 1)
   end
 
   def test_that_vintage_robot_needing_repairs_sent_to_station_2
@@ -23,9 +23,9 @@ class TestRobot < MiniTest::Test
     @robot.foreign_model = false
     @robot.vintage_model = true
     # act
-
+    send_to_station = robot.station
     # assert
-    assert @robot.station == 2
+    assert_equal(send_to_station, 2)
   end
 
   def test_that_standard_robot_needing_repairs_sent_to_station_3
@@ -35,9 +35,9 @@ class TestRobot < MiniTest::Test
     @robot.foreign_model = false
     @robot.vintage_model = false
     # act
-
+    send_to_station = robot.station
     # assert
-    assert @robot.station == 3
+    assert_equal(send_to_station, 3)
   end
 
   def test_that_robot_in_good_condition_sent_to_station_4
@@ -47,14 +47,14 @@ class TestRobot < MiniTest::Test
     @robot.foreign_model = false
     @robot.vintage_model = false
     # act
-
+    send_to_station = robot.station
     # assert
-    assert @robot.station == 4
+    assert_equal(send_to_station, 4)
   end
 
   def test_prioritize_tasks_with_empty_todo_list_returns_negative_one
     # arrange
-
+    @robot = Robot.new
     # act
 
     # assert
