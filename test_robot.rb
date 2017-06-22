@@ -42,10 +42,14 @@ class TestRobot < MiniTest::Test
 
   def test_that_robot_in_good_condition_sent_to_station_4
     # arrange
-
+    @robot = Robot.new
+    @robot.needs_repairs = false
+    @robot.foreign_model = false
+    @robot.vintage_model = false
     # act
 
     # assert
+    assert @robot.station == 4
   end
 
   def test_prioritize_tasks_with_empty_todo_list_returns_negative_one
