@@ -30,10 +30,14 @@ class TestRobot < MiniTest::Test
 
   def test_that_standard_robot_needing_repairs_sent_to_station_3
     # arrange
-
+    @robot = Robot.new
+    @robot.needs_repairs = true
+    @robot.foreign_model = false
+    @robot.vintage_model = false
     # act
 
     # assert
+    assert @robot.station == 3
   end
 
   def test_that_robot_in_good_condition_sent_to_station_4
